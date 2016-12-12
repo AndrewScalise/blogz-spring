@@ -21,8 +21,10 @@ public class User extends AbstractEntity {
 	private String pwHash;
 	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	
+	//all posts by a given user
 	private List<Post> posts;
 	
+	//for hibernate
 	public User() {}
 	
 	public User(String username, String password) {

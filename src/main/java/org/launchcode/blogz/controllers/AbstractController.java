@@ -1,5 +1,6 @@
 package org.launchcode.blogz.controllers;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.launchcode.blogz.models.User;
@@ -27,4 +28,8 @@ public abstract class AbstractController {
     	session.setAttribute(userSessionKey, user.getUid());
     }
 	
+    public void loginHelper(HttpServletRequest request, User user){
+    	HttpSession thisSession = request.getSession();
+    	setUserInSession(thisSession, user);
+    }
 }
