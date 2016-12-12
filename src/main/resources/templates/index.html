@@ -11,7 +11,7 @@
 	<!--  TODO - list all users, with links to their blog pages -->
 	<body>
 		<ul>
-			<li th:each="user : ${users}"><span th:text="${user.username}"></span> at <span> <a th:href="'/blog/' + ${user.username} + '/' + ${user.uid}" th:text="${user.username}">here</a></span></li>
+			<li th:each="user : ${users}"><span th:text="${user.username}"></span> at <span> <a th:href="'/blog/' + ${user.username}" th:text="${user.username}">here</a></span></li>
 		</ul>
 	</body>
 

@@ -28,6 +28,7 @@ public class PostController extends AbstractController {
 		//get request parameters
 		String title = request.getParameter("title");
 		String body = request.getParameter("body");
+		String error = request.getParameter("error");
 		HttpSession session = request.getSession(true);
 		int uid = (int)session.getAttribute(userSessionKey);
 		User user = userDao.findByUid(uid);
@@ -40,14 +41,16 @@ public class PostController extends AbstractController {
 		{		
 			Post post = new Post(title, body, user);
 			postDao.save(post);
-			return "redirect:blog";
+			return "blog";
 		}
-		else
+		else if(!error.equals(null))
 		{
-			String error = "Invalid post";
-			model.addAttribute("error", error);
+			String errored = "Invalid post";
+			model.addAttribute("error", errored);
 			return "newpost";
 		}
+		
+		return "redirect:index";
 		 		
 	}
 	
